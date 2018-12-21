@@ -109,7 +109,7 @@ for (var z = 0; z < qanak5; ++z) {
     frameRate(50);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-}
+} 
 
 
 
