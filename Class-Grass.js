@@ -1,8 +1,27 @@
+var LivingCreature = require("./LivingCreature")
 
 
-
-class Grass extends LivingCreature {
-   
+module.exports = class Grass extends LivingCreature {
+    constructor(x,y) {
+        super(x,y);
+        this.maxMulCount = 3;
+    }
+    getNewCoordinates() {
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+    }
+   chooseCell(character) {
+       this.getNewCoordinates();
+       return super.chooseCell(character);
+   }
 
     
 

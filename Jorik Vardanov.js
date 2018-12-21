@@ -1,4 +1,6 @@
-class Jorik_Vardanov {
+var LivingCreature = require("./LivingCreature")
+
+module.exports = class     Jorik_Vardanov extends LivingCreature  {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -14,7 +16,7 @@ class Jorik_Vardanov {
             [this.x + 1, this.y + 1]
         ]
     }
-
+    Jorik_Vardanov
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
