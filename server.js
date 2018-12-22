@@ -11,21 +11,21 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
- 
+
 
 app.use(express.static("."));
-app.get('/',function (req, res) {
+app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 server.listen(3000);
 
-io.on('connection', function (socket){ })
+io.on('connection', function (socket) { })
 
-var Grass = require("./Grass")
-var Xotaker = require("./Xotaker")
+var Grass = require("./Class-Grass.")
+var Xotaker = require("./xotaker")
 var Gishatich = require("./Gishatich")
 var Jorik_Vardanov = require("./Jorik_Vardanov")
-var Parisp = require("./Parisp")
+var Parisp = require("./Class-Parisp")
 
 // var VampirArr = [];
 function RadInt(min, max) {
@@ -79,38 +79,67 @@ for (var z = 0; z < qanak5; ++z) {
     matrix[xx][yy] = 5;
 }
 
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y)
-                grassArr.push(gr)
-            }
-            else if (matrix[y][x] == 2) {
-                var xt = new Xotaker(x, y)
-                xotakerArr.push(xt)
-            }
-            else if (matrix[y][x] == 3) {
-                var gi = new Gishatich(x, y)
-                gishatichArr.push(gi)
-            }
-            else if (matrix[y][x] == 4) {
-                var Jr = new Jorik_Vardanov(x, y)
-                JorArr.push(Jr)
-            }
-            else if (matrix[y][x] == 5) {
-                var pt = new Parisp(x, y)
-                PatArr.push(pt)
-            }
-
-
+for (var y = 0; y < matrix.length; y++) {
+    for (var x = 0; x < matrix[y].length; x++) {
+        if (matrix[y][x] == 1) {
+            var gr = new Grass(x, y)
+            grassArr.push(gr)
         }
-    
+        else if (matrix[y][x] == 2) {
+            var xt = new Xotaker(x, y)
+            xotakerArr.push(xt)
+        }
+        else if (matrix[y][x] == 3) {
+            var gi = new Gishatich(x, y)
+            gishatichArr.push(gi)
+        }
+        else if (matrix[y][x] == 4) {
+            var Jr = new Jorik_Vardanov(x, y)
+            JorArr.push(Jr)
+        }
+        else if (matrix[y][x] == 5) {
+            var pt = new Parisp(x, y)
+            PatArr.push(pt)
+        }
+
+
+    }
+
 
     frameRate(50);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-} 
+}
 
+
+
+
+for (var y = 0; y < matrix.length; y++) {
+    for (var x = 0; x < matrix[y].length; x++) {
+        if (matrix[y][x] == 1) {
+            var gr = new Grass(x, y)
+            grassArr.push(gr)
+        }
+        else if (matrix[y][x] == 2) {
+            var xt = new Xotaker(x, y)
+            xotakerArr.push(xt)
+        }
+        else if (matrix[y][x] == 3) {
+            var gi = new Gishatich(x, y)
+            gishatichArr.push(gi)
+        }
+        else if (matrix[y][x] == 4) {
+            var Jr = new Jorik_Vardanov(x, y)
+            JorArr.push(Jr)
+        }
+        else if (matrix[y][x] == 5) {
+            var pt = new Parisp(x, y)
+            PatArr.push(pt)
+        }
+
+
+    }
+}
 
 
 
@@ -146,7 +175,19 @@ function drawUrish() {
 
 
     }
+    io.socket.emit("matrix", matrix);
 
 }
 
-setInterval(drawUrish, 200)
+setInterval(drawUrish, 200);
+
+
+
+
+
+
+
+
+
+
+

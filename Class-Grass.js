@@ -2,8 +2,8 @@ var LivingCreature = require("./LivingCreature")
 
 
 module.exports = class Grass extends LivingCreature {
-    constructor(x,y) {
-        super(x,y);
+    constructor(x, y) {
+        super(x, y);
         this.maxMulCount = 3;
     }
     getNewCoordinates() {
@@ -18,12 +18,12 @@ module.exports = class Grass extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-   chooseCell(character) {
-       this.getNewCoordinates();
-       return super.chooseCell(character);
-   }
+    chooseCell(character) {
+        this.getNewCoordinates();
+        return super.chooseCell(character);
+    }
 
-    
+
 
     mult() {
         var empty = random(this.chooseCell(0));
